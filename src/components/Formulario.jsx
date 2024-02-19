@@ -1,6 +1,9 @@
-import { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 
-const Formulario = () => {
+import { useState } from 'react';
+
+
+const Formulario = ({eventos,setEventos }) => {
   const [nombre, setNombre] = useState('');
   const [contacto, setContacto] = useState('');
   const [email, setEmail] = useState('');
@@ -19,6 +22,24 @@ const Formulario = () => {
     }
 
     setError(false);
+
+    const objetoPaciente = {
+      nombre,
+      contacto,
+      email,
+      fecha,
+      detalle,
+    };
+
+    // aplicamos spred operation, para tomar una copia de eventos e ir agregando
+    setEventos([...eventos, objetoPaciente]);
+
+    // reiniciando el formulario
+    setNombre("");
+    setContacto('');
+    setEmail('');
+    setFecha('');
+    setDetalle('');
   };
 
   return (
@@ -118,5 +139,12 @@ const Formulario = () => {
     </div>
   );
 };
+
+// documentación prop
+Formulario.propTypes = {
+  eventos: PropTypes.array.isRequired,
+  setEventos: PropTypes.func.isRequired,
+};
+
 
 export default Formulario;
