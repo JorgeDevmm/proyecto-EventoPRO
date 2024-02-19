@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import Error from './Error';
 
 import { useState } from 'react';
 
@@ -57,11 +58,10 @@ const Formulario = ({eventos,setEventos }) => {
         action=''
         className=' text-white shadow-md py-5 px-5 md:w-4/5 lg:w-11/12 mx-auto rounded-xl'
       >
-        {error && (
-          <div className='text-center bg-red-800 text-white font-bold py-3 mb-2 uppercase rounded-lg'>
-            <p>Todos los Campos son obligatorios</p>
-          </div>
-        )}
+        {error && <Error
+          // props
+          mensaje = "Todos los campos son obligatorios"
+        />}
         <div className='mb-5'>
           <label htmlFor='nombre' className='font-bold block text-stone-300'>
             Nombre de Evento
