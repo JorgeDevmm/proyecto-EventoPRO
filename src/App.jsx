@@ -5,14 +5,14 @@ import Footer from './components/Footer';
 
 function App() {
   return (
-    <div className='bg-gray-900 h-full'>
+    <div className='bg-[#030303] h-full'>
       <Header />
-      <div className='mt-8 md:flex container mx-auto '>
+      <div className=' md:flex container mx-auto '>
         <Formulario />
         <ListadoEventos />
       </div>
 
-      <Footer/>
+      <Footer />
     </div>
   );
 }

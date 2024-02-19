@@ -1,9 +1,9 @@
 function Header() {
   return (
     <>
-      <h1 className='text-center text-5xl text-white bg-gray-950 font-bold p-8'>
+      <h1 className='text-left text-3xl text-white bg-[#030303] font-bold p-7'>
         Evento {''}
-        <span className="text-rose-600 ">PRO</span>
+        <span className='text-rose-600 '>PRO</span>
       </h1>
     </>
   );
