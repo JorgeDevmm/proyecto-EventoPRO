@@ -2,11 +2,23 @@ import { useState, useEffect } from 'react';
 
 const Formulario = () => {
   const [nombre, setNombre] = useState('');
+  const [contacto, setContacto] = useState('');
+  const [email, setEmail] = useState('');
+  const [fecha, setFecha] = useState('');
+  const [detalle, setDetalle] = useState('');
+
+  const [error, setError] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log('Esto es una prueba de envio de formulario');
+    // Validación del Formulario
+    if ([nombre, contacto, email, fecha, detalle].includes('')) {
+      setError(true);
+      return;
+    }
+
+    setError(false);
   };
 
   return (
@@ -24,6 +36,11 @@ const Formulario = () => {
         action=''
         className=' text-white shadow-md py-5 px-5 md:w-4/5 lg:w-11/12 mx-auto rounded-xl'
       >
+        {error && (
+          <div className='text-center bg-red-800 text-white font-bold py-3 mb-2 uppercase rounded-lg'>
+            <p>Todos los Campos son obligatorios</p>
+          </div>
+        )}
         <div className='mb-5'>
           <label htmlFor='nombre' className='font-bold block text-stone-300'>
             Nombre de Evento
@@ -31,7 +48,7 @@ const Formulario = () => {
           <input
             type='text'
             id='nombre'
-            className='border-2 p-3 mt-2 rounded-md w-full placeholder-gray-400 bg-[#030303]'
+            className='border-2 p-3 mt-2 rounded-md w-full placeholder-gray-400 bg-[#1D1D1D]'
             placeholder='Nombre de Evento'
             value={nombre}
             onChange={(e) => setNombre(e.target.value)}
@@ -45,8 +62,10 @@ const Formulario = () => {
           <input
             type='text'
             id='contacto'
-            className='border-2 p-3 mt-2 rounded-md w-full placeholder-gray-400 bg-[#030303]'
+            className='border-2 p-3 mt-2 rounded-md w-full placeholder-gray-400 bg-[#1D1D1D]'
             placeholder='Nombre del Contacto'
+            value={contacto}
+            onChange={(e) => setContacto(e.target.value)}
           />
         </div>
         <div className='mb-5'>
@@ -56,8 +75,10 @@ const Formulario = () => {
           <input
             type='email'
             id='email'
-            className='border-2 p-3 mt-2 rounded-md w-full placeholder-gray-400 bg-[#030303]'
+            className='border-2 p-3 mt-2 rounded-md w-full placeholder-gray-400 bg-[#1D1D1D]'
             placeholder='email de contacto'
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
         <div className='mb-5'>
@@ -67,7 +88,9 @@ const Formulario = () => {
           <input
             type='date'
             id='fecha'
-            className='border-2 p-3 mt-2 rounded-md w-full placeholder-gray-400 bg-[#030303]'
+            className='border-2 p-3 mt-2 rounded-md w-full placeholder-gray-400 bg-[#1D1D1D]'
+            value={fecha}
+            onChange={(e) => setFecha(e.target.value)}
           />
         </div>
         <div className='mb-5'>
@@ -79,14 +102,16 @@ const Formulario = () => {
             id='detalle'
             cols='30'
             rows='3'
-            className='border-2 p-2 mt-2 rounded-md w-full placeholder-gray-400 bg-[#030303]'
+            className='border-2 p-2 mt-2 rounded-md w-full placeholder-gray-400 bg-[#1D1D1D]'
             placeholder='Detalles del Evento'
+            value={detalle}
+            onChange={(e) => setDetalle(e.target.value)}
           ></textarea>
         </div>
 
         <input
           type='submit'
-          className='py-2 bg-[#2D44F5] text-white font-bold text-lg rounded-lg inline-block  w-full hover:bg-[#2c76ffef] transition-colors'
+          className='py-3 bg-[#2D44F5] text-white font-bold text-lg rounded-lg inline-block  w-full hover:bg-[#2c76ffef] transition-colors'
           value='Registrar'
         />
       </form>
