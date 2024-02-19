@@ -1,4 +1,14 @@
+import { useState, useEffect } from 'react';
+
 const Formulario = () => {
+  const [nombre, setNombre] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    console.log('Esto es una prueba de envio de formulario');
+  };
+
   return (
     <div className='bg-[#030303] md:w-1/2 lg:w-2/4 rounded-l-lg '>
       <h2 className='text-center pt-8 text-xl lg:text-3xl font-bold text-white'>
@@ -10,6 +20,7 @@ const Formulario = () => {
       </p>
 
       <form
+        onSubmit={handleSubmit} /*asociar función a evento*/
         action=''
         className=' text-white shadow-md py-5 px-5 md:w-4/5 lg:w-11/12 mx-auto rounded-xl'
       >
@@ -22,6 +33,8 @@ const Formulario = () => {
             id='nombre'
             className='border-2 p-3 mt-2 rounded-md w-full placeholder-gray-400 bg-[#030303]'
             placeholder='Nombre de Evento'
+            value={nombre}
+            onChange={(e) => setNombre(e.target.value)}
           />
         </div>
 
