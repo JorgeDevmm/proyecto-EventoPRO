@@ -1,4 +1,6 @@
-const Evento = ({ evento }) => {
+import PropTypes from 'prop-types';
+
+const Evento = ({ evento, setEvento }) => {
   const { nombre, contacto, email, fecha, detalle } = evento;
 
   return (
@@ -30,6 +32,8 @@ const Evento = ({ evento }) => {
             <button
               type='button'
               className='py-2 px-10 bg-amber-600 hover:bg-amber-700 text-white font-bold uppercase rounded-lg'
+              // al pasar un argumento aplicamos un callback con fn flecha
+              onClick={()=>setEvento(evento) }
             >
               Editar
             </button>
@@ -46,6 +50,12 @@ const Evento = ({ evento }) => {
       </div>
     </>
   );
+};
+
+// documentación prop
+Evento.propTypes = {
+  evento: PropTypes.object.isRequired,
+  setEvento: PropTypes.func.isRequired,
 };
 
 export default Evento;

@@ -6,7 +6,10 @@ import ListadoEventos from './components/ListadoEventos';
 import Footer from './components/Footer';
 
 function App() {
+
+  // hooks
   const [eventos, setEventos] = useState([]);
+  const [evento, setEvento] = useState([]);
 
   return (
     <div className='bg-[#030303] h-full'>
@@ -18,7 +21,9 @@ function App() {
           setEventos={setEventos}
         />
         <ListadoEventos
-          eventos={eventos}
+          // props
+          eventos={eventos}/*manipular el objetos de todos los evento */
+          setEvento={setEvento}/*actualizar o edita un evento en particular */
         />
       </div>
 
