@@ -17,7 +17,9 @@ function App() {
           eventos={eventos}
           setEventos={setEventos}
         />
-        <ListadoEventos />
+        <ListadoEventos
+          eventos={eventos}
+        />
       </div>
 
       <Footer />

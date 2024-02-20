@@ -3,8 +3,7 @@ import Error from './Error';
 
 import { useState } from 'react';
 
-
-const Formulario = ({eventos,setEventos }) => {
+const Formulario = ({ eventos, setEventos }) => {
   const [nombre, setNombre] = useState('');
   const [contacto, setContacto] = useState('');
   const [email, setEmail] = useState('');
@@ -12,6 +11,17 @@ const Formulario = ({eventos,setEventos }) => {
   const [detalle, setDetalle] = useState('');
 
   const [error, setError] = useState(false);
+
+
+  // Función que genera ID
+  const generarId = () => {
+    const random = Math.random().toString(36).substr(2);
+    const fecha = Date.now().toString(36);
+
+
+    return random + fecha;
+  }
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -30,13 +40,14 @@ const Formulario = ({eventos,setEventos }) => {
       email,
       fecha,
       detalle,
+      id: generarId()/*id autogenerado por función */
     };
 
     // aplicamos spred operation, para tomar una copia de eventos e ir agregando
     setEventos([...eventos, objetoPaciente]);
 
     // reiniciando el formulario
-    setNombre("");
+    setNombre('');
     setContacto('');
     setEmail('');
     setFecha('');
@@ -58,10 +69,12 @@ const Formulario = ({eventos,setEventos }) => {
         action=''
         className=' text-white shadow-md py-5 px-5 md:w-4/5 lg:w-11/12 mx-auto rounded-xl'
       >
-        {error && <Error
-          // props
-          mensaje = "Todos los campos son obligatorios"
-        />}
+        {/* validando error y aplicando props tipo children */}
+        {error && (
+          <Error>
+            <p>Todos los campos son obligatorios</p>
+          </Error>
+        )}
         <div className='mb-5'>
           <label htmlFor='nombre' className='font-bold block text-stone-300'>
             Nombre de Evento
@@ -145,6 +158,5 @@ Formulario.propTypes = {
   eventos: PropTypes.array.isRequired,
   setEventos: PropTypes.func.isRequired,
 };
-
 
 export default Formulario;
