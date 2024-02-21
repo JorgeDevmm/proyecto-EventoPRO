@@ -3,7 +3,7 @@ import Evento from './Evento';
 
 
 const ListadoEventos = ({ eventos, setEvento }) => {
-  console.log(eventos);
+  
   return (
     <div className='md:w-2/4 bg-gradient-to-r from-[#393A3A] to-[#030303]  text-white h-screen  overflow-y-scroll'>
       {/* validación si existen Eventos o no */}

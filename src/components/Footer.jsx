@@ -3,7 +3,7 @@ const Footer = () => {
     <>
       <div className='bg-[#030303] text-white '>
         <p className='text-center p-2 text-md'>
-          Realizado por Jorge Luis Monzón Morales
+          © Todos los derechos reservados. Hecho por Jorge Luis Monzón Morales
         </p>
       </div>
     </>

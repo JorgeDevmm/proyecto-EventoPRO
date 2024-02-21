@@ -1,18 +1,22 @@
 import PropTypes from 'prop-types';
 
 const Evento = ({ evento, setEvento }) => {
-  const { nombre, contacto, email, fecha, detalle } = evento;
+  const { nombre, contacto,telefono, email, fecha, detalle } = evento;
 
   return (
     <>
       <div className='m-3 bg-[#030303] px-5 py-10 rounded-xl'>
         <p className='font-bold mb-3 text-rose-600 uppercase'>
-          Nombre: {''}
+          Nombre de Evento: {''}
           <span className='text-white font-normal normal-case'>{nombre}</span>
         </p>
         <p className='font-bold mb-3 text-rose-600 uppercase'>
-          Nombre de Contacto: {''}
+          Contacto: {''}
           <span className='text-white font-normal normal-case'>{contacto}</span>
+        </p>
+        <p className='font-bold mb-3 text-rose-600 uppercase'>
+          Telefono: {''}
+          <span className='text-white font-normal normal-case'>{telefono}</span>
         </p>
         <p className='font-bold mb-3 text-rose-600 uppercase'>
           Email: {''}

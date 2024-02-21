@@ -6,7 +6,6 @@ import ListadoEventos from './components/ListadoEventos';
 import Footer from './components/Footer';
 
 function App() {
-
   // hooks
   const [eventos, setEventos] = useState([]);
   const [evento, setEvento] = useState([]);
@@ -19,11 +18,12 @@ function App() {
           //props
           eventos={eventos}
           setEventos={setEventos}
+          evento={evento} /*para cargar al form para la edición */
         />
         <ListadoEventos
           // props
-          eventos={eventos}/*manipular el objetos de todos los evento */
-          setEvento={setEvento}/*actualizar o edita un evento en particular */
+          eventos={eventos} /*manipular el objetos de todos los eventos */
+          setEvento={setEvento} /*actualizar o edita un evento en particular */
         />
       </div>
 

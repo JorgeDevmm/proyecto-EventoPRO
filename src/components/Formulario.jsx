@@ -1,16 +1,22 @@
 import PropTypes from 'prop-types';
 import Error from './Error';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
-const Formulario = ({ eventos, setEventos }) => {
+const Formulario = ({ eventos, setEventos, evento }) => {
   const [nombre, setNombre] = useState('');
   const [contacto, setContacto] = useState('');
+  const [telefono, setTelefono] = useState('');
   const [email, setEmail] = useState('');
   const [fecha, setFecha] = useState('');
   const [detalle, setDetalle] = useState('');
 
   const [error, setError] = useState(false);
+
+  // aplicando useEffect
+  useEffect(() => {
+    // solo se ejrcutara cuando cambie
+  }, [evento]);
 
   // Función que genera ID
   const generarId = () => {
@@ -24,7 +30,7 @@ const Formulario = ({ eventos, setEventos }) => {
     e.preventDefault();
 
     // Validación del Formulario
-    if ([nombre, contacto, email, fecha, detalle].includes('')) {
+    if ([nombre, contacto,telefono, email, fecha, detalle].includes('')) {
       setError(true);
       return;
     }
@@ -34,6 +40,7 @@ const Formulario = ({ eventos, setEventos }) => {
     const objetoPaciente = {
       nombre,
       contacto,
+      telefono,
       email,
       fecha,
       detalle,
@@ -46,6 +53,7 @@ const Formulario = ({ eventos, setEventos }) => {
     // reiniciando el formulario
     setNombre('');
     setContacto('');
+    setTelefono('');
     setEmail('');
     setFecha('');
     setDetalle('');
@@ -74,7 +82,7 @@ const Formulario = ({ eventos, setEventos }) => {
         )}
         <div className='mb-5'>
           <label htmlFor='nombre' className='font-bold block text-stone-300'>
-            Nombre de Evento
+            Nombre del Evento
           </label>
           <input
             type='text'
@@ -88,7 +96,7 @@ const Formulario = ({ eventos, setEventos }) => {
 
         <div className='mb-5'>
           <label htmlFor='contacto' className='font-bold block text-stone-300'>
-            Nombre de Contacto
+            Nombre del Contacto
           </label>
           <input
             type='text'
@@ -97,6 +105,19 @@ const Formulario = ({ eventos, setEventos }) => {
             placeholder='Nombre del Contacto'
             value={contacto}
             onChange={(e) => setContacto(e.target.value)}
+          />
+        </div>
+        <div className='mb-5'>
+          <label htmlFor='telefono' className='font-bold block text-stone-300'>
+            Telefono
+          </label>
+          <input
+            type='text'
+            id='telefono'
+            className='border-2 p-3 mt-2 rounded-md w-full placeholder-gray-400 bg-[#1D1D1D]'
+            placeholder='Ingresar Telefono'
+            value={telefono}
+            onChange={(e) => setTelefono(e.target.value)}
           />
         </div>
         <div className='mb-5'>
@@ -154,6 +175,7 @@ const Formulario = ({ eventos, setEventos }) => {
 Formulario.propTypes = {
   eventos: PropTypes.array.isRequired,
   setEventos: PropTypes.func.isRequired,
+  evento: PropTypes.object.isRequired,
 };
 
 export default Formulario;
