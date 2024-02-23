@@ -1,9 +1,7 @@
 import PropTypes from 'prop-types';
 import Evento from './Evento';
 
-
 const ListadoEventos = ({ eventos, setEvento }) => {
-  
   return (
     <div className='md:w-2/4 bg-gradient-to-r from-[#393A3A] to-[#030303]  text-white h-screen  overflow-y-scroll'>
       {/* validación si existen Eventos o no */}
@@ -19,10 +17,7 @@ const ListadoEventos = ({ eventos, setEvento }) => {
 
           {/* iteramos el arreglo eventos y obtenemos el objeto evento*/}
           {eventos.map((evento) => (
-            <Evento
-              key={evento.id}
-              evento={evento}
-              setEvento={setEvento} />
+            <Evento key={evento.id} evento={evento} setEvento={setEvento} />
           ))}
         </>
       ) : (
@@ -45,7 +40,7 @@ const ListadoEventos = ({ eventos, setEvento }) => {
 // documentación prop
 ListadoEventos.propTypes = {
   eventos: PropTypes.array.isRequired,
-  setEvento:PropTypes.func.isRequired
+  setEvento: PropTypes.func.isRequired,
 };
 
 export default ListadoEventos;

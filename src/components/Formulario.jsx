@@ -13,9 +13,18 @@ const Formulario = ({ eventos, setEventos, evento }) => {
 
   const [error, setError] = useState(false);
 
-  // aplicando useEffect
+  // aplicando useEffect/efectos secundariao accionesm manipulación DOM
   useEffect(() => {
     // solo se ejrcutara cuando cambie
+    // valida objeto evento que no este vacio
+    if (Object.keys(evento).length > 0) {
+      setNombre(evento.nombre);
+      setContacto(evento.contacto);
+      setTelefono(evento.telefono);
+      setEmail(evento.email);
+      setFecha(evento.fecha);
+      setDetalle(evento.detalle);
+    }
   }, [evento]);
 
   // Función que genera ID
@@ -30,7 +39,7 @@ const Formulario = ({ eventos, setEventos, evento }) => {
     e.preventDefault();
 
     // Validación del Formulario
-    if ([nombre, contacto,telefono, email, fecha, detalle].includes('')) {
+    if ([nombre, contacto, telefono, email, fecha, detalle].includes('')) {
       setError(true);
       return;
     }
