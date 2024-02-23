@@ -173,7 +173,8 @@ const Formulario = ({ eventos, setEventos, evento }) => {
         <input
           type='submit'
           className='py-3 bg-[#2D44F5] text-white font-bold text-lg rounded-lg inline-block  w-full hover:bg-[#2c76ffef] transition-colors'
-          value='Registrar'
+          // valida el value de que mostrar de acuerdo si existe el id
+          value={ evento.id ? "Editar Evento" : "Agregar Evento"}
         />
       </form>
     </div>
