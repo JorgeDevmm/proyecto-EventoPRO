@@ -19,6 +19,7 @@ function App() {
           eventos={eventos}
           setEventos={setEventos}
           evento={evento} /*para cargar al form para la edición */
+          setEvento={setEvento} /*Modificar evento en memoria en formulario */
         />
         <ListadoEventos
           // props

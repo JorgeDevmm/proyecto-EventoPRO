@@ -3,7 +3,7 @@ import Error from './Error';
 
 import { useState, useEffect } from 'react';
 
-const Formulario = ({ eventos, setEventos, evento }) => {
+const Formulario = ({ eventos, setEventos, evento, setEvento }) => {
   const [nombre, setNombre] = useState('');
   const [contacto, setContacto] = useState('');
   const [telefono, setTelefono] = useState('');
@@ -13,9 +13,9 @@ const Formulario = ({ eventos, setEventos, evento }) => {
 
   const [error, setError] = useState(false);
 
-  // aplicando useEffect/efectos secundariao accionesm manipulación DOM
+  // aplicando useEffect/efectos secundariao acciones en manipulación DOM
   useEffect(() => {
-    // solo se ejrcutara cuando cambie
+    // solo se ejecutara cuando cambie
     // valida objeto evento que no este vacio
     if (Object.keys(evento).length > 0) {
       setNombre(evento.nombre);
@@ -35,6 +35,7 @@ const Formulario = ({ eventos, setEventos, evento }) => {
     return random + fecha;
   };
 
+  // validación de campos del formulario
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -46,18 +47,39 @@ const Formulario = ({ eventos, setEventos, evento }) => {
 
     setError(false);
 
-    const objetoPaciente = {
+    // Objeto de Evento
+    const objetoEvento = {
       nombre,
       contacto,
       telefono,
       email,
       fecha,
       detalle,
-      id: generarId() /*id autogenerado por función */,
     };
 
-    // aplicamos spred operation, para tomar una copia de eventos e ir agregando
-    setEventos([...eventos, objetoPaciente]);
+    // validamos si existe el id del evento, evento.id es del argumento props que recibimos
+    if (evento.id) {
+      // Editando el Registro
+
+      // asignar id de evento al objetoEvento a editar
+      objetoEvento.id = evento.id;
+
+      // Iteramos sobre el array de eventos y comparamos el id de evento is es igual eventoState y no devolver el objeto actualizo o no en el state
+      const eventosActualizados = eventos.map((eventoState) =>
+        eventoState.id === evento.id ? objetoEvento : eventoState
+      );
+
+      setEventos(eventosActualizados);
+      // limpiar el state en memoria
+      setEvento({});
+    } else {
+      // Nuevo Registro
+
+      (objetoEvento.id =
+        generarId()) /*id autogenerado por función, generando en l objetoEvento */,
+        // aplicamos spred operation, para tomar una copia de eventos e ir agregando
+        setEventos([...eventos, objetoEvento]);
+    }
 
     // reiniciando el formulario
     setNombre('');
@@ -174,7 +196,7 @@ const Formulario = ({ eventos, setEventos, evento }) => {
           type='submit'
           className='py-3 bg-[#2D44F5] text-white font-bold text-lg rounded-lg inline-block  w-full hover:bg-[#2c76ffef] transition-colors'
           // valida el value de que mostrar de acuerdo si existe el id
-          value={ evento.id ? "Editar Evento" : "Agregar Evento"}
+          value={evento.id ? 'Editar Evento' : 'Agregar Evento'}
         />
       </form>
     </div>
