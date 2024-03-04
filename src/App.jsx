@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import Header from './components/Header';
 import Formulario from './components/Formulario';
@@ -7,8 +7,27 @@ import Footer from './components/Footer';
 
 function App() {
   // hooks
+  // Este código inicializa el estado eventos como un array vacío mediante el uso de useState
   const [eventos, setEventos] = useState([]);
   const [evento, setEvento] = useState({});
+
+  // Este efecto se ejecuta solo una vez, cuando el componente se monta ([] como dependencia significa que no depende de ninguna variable y, por lo tanto, se ejecuta solo una vez al inicio).
+  useEffect(() => {
+    // función que parsea a un array el evento de localStorage o agrega un array vacio si es null o undefined
+    const obtenerLS = () => {
+      const eventosLS = JSON.parse(localStorage.getItem('eventos')) ?? [];
+      // actualiza el estado del arreglo con el valor obtenido de localStorage
+      setEventos(eventosLS);
+    };
+
+    obtenerLS();
+  }, []);
+
+  // cuando ocurre un cambio en el arreglo de eventos
+  useEffect(() => {
+    // guardamos en localStorage y lo convertimos en un string con JSON.s
+    localStorage.setItem('eventos', JSON.stringify(eventos));
+  }, [eventos]);
 
   // función eliminar Eventos
   const eliminarEvento = (id) => {
