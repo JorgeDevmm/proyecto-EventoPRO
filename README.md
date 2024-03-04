@@ -1,8 +1,31 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# PROYECTO EVENTO PRO (React + Vite)
+---
+**Realizado: Jorge Luis Monzón Morales**
 
-Currently, two official plugins are available:
+El siguiente proyecto consiste en un administrador y organizador de cualquier tipo de evento ya sea personal o grupal se trabajo con React mediante Hooks como useState, useEffec, se utilizo componentes funcionales y la interacción mediante props y estados, ademas se utilizo localStorage como almacenamiento:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+Tecnologias aplicadas:
+- HTML
+- CSS
+- REACT JS
+- Tailwind CSS
+- Vite
+
+**Modo Escritorio**
+---
+![alt text](image.png)
+
+**Modo Tablet**
+---
+![alt text](image-1.png)
+
+
+**Modo celular**
+---
+![alt text](image-2.png)
+
+
+**Realizado: Jorge Luis Monzón Morales**
+

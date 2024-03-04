@@ -92,10 +92,10 @@ const Formulario = ({ eventos, setEventos, evento, setEvento }) => {
 
   return (
     <div className='bg-[#030303] md:w-1/2 lg:w-2/4 rounded-l-lg '>
-      <h2 className='text-center pt-8 text-xl lg:text-3xl font-bold text-white'>
+      <h2 className='text-center pt-2 text-xl lg:text-3xl font-bold text-white'>
         Ingresar Información del Evento
       </h2>
-      <p className='text-center text-lg mt-2 text-white mb-10'>
+      <p className='text-center text-lg mt-2 text-white mb-2'>
         Añade Eventos y {''}
         <span className='text-rose-600 font-bold '>Admistrarlos</span>
       </p>
@@ -111,7 +111,7 @@ const Formulario = ({ eventos, setEventos, evento, setEvento }) => {
             <p>Todos los campos son obligatorios</p>
           </Error>
         )}
-        <div className='mb-5'>
+        <div className='mb-3'>
           <label htmlFor='nombre' className='font-bold block text-stone-300'>
             Nombre del Evento
           </label>
@@ -125,7 +125,7 @@ const Formulario = ({ eventos, setEventos, evento, setEvento }) => {
           />
         </div>
 
-        <div className='mb-5'>
+        <div className='mb-3'>
           <label htmlFor='contacto' className='font-bold block text-stone-300'>
             Nombre del Contacto
           </label>
@@ -138,7 +138,7 @@ const Formulario = ({ eventos, setEventos, evento, setEvento }) => {
             onChange={(e) => setContacto(e.target.value)}
           />
         </div>
-        <div className='mb-5'>
+        <div className='mb-3'>
           <label htmlFor='telefono' className='font-bold block text-stone-300'>
             Telefono
           </label>
@@ -151,7 +151,7 @@ const Formulario = ({ eventos, setEventos, evento, setEvento }) => {
             onChange={(e) => setTelefono(e.target.value)}
           />
         </div>
-        <div className='mb-5'>
+        <div className='mb-3'>
           <label htmlFor='email' className='font-bold block text-stone-300'>
             Email
           </label>
@@ -164,7 +164,7 @@ const Formulario = ({ eventos, setEventos, evento, setEvento }) => {
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
-        <div className='mb-5'>
+        <div className='mb-3'>
           <label htmlFor='fecha' className='font-bold block text-stone-300'>
             Fecha de evento
           </label>
@@ -176,7 +176,7 @@ const Formulario = ({ eventos, setEventos, evento, setEvento }) => {
             onChange={(e) => setFecha(e.target.value)}
           />
         </div>
-        <div className='mb-5'>
+        <div className='mb-3'>
           <label htmlFor='detalle' className='font-bold block text-stone-300'>
             Detalle de evento
           </label>

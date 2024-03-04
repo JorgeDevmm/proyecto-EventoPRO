@@ -3,11 +3,11 @@ import Evento from './Evento';
 
 const ListadoEventos = ({ eventos, setEvento, eliminarEvento }) => {
   return (
-    <div className='md:w-2/4 bg-gradient-to-r from-[#393A3A] to-[#030303]  text-white h-screen  overflow-y-scroll'>
+    <div className='md:w-2/4 bg-gradient-to-r from-[#393A3A] to-[#030303] h-svh  text-white overflow-y-scroll'>
       {/* validación si existen Eventos o no */}
       {eventos && eventos.length ? (
         <>
-          <h2 className='text-center font-bold text-xl lg:text-3xl  pt-8'>
+          <h2 className='text-center font-bold text-xl lg:text-3xl  pt-2'>
             Listado de Eventos
           </h2>
           <p className='text-center text-lg mt-2 text-white mb-10'>
