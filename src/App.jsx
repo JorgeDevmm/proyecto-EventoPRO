@@ -8,7 +8,15 @@ import Footer from './components/Footer';
 function App() {
   // hooks
   const [eventos, setEventos] = useState([]);
-  const [evento, setEvento] = useState([]);
+  const [evento, setEvento] = useState({});
+
+  // función eliminar Eventos
+  const eliminarEvento = (id) => {
+    const eventosActualizados = eventos.filter((evento) => evento.id !== id);
+
+    // actualiza el arreglo de eventos con los eventos diferentes al id
+    setEventos(eventosActualizados);
+  };
 
   return (
     <div className='bg-[#030303] h-full'>
@@ -25,6 +33,7 @@ function App() {
           // props
           eventos={eventos} /*manipular el objetos de todos los eventos */
           setEvento={setEvento} /*actualizar o edita un evento en particular */
+          eliminarEvento={eliminarEvento}
         />
       </div>
 

@@ -208,6 +208,7 @@ Formulario.propTypes = {
   eventos: PropTypes.array.isRequired,
   setEventos: PropTypes.func.isRequired,
   evento: PropTypes.object.isRequired,
+  setEvento: PropTypes.func.isRequired,
 };
 
 export default Formulario;
