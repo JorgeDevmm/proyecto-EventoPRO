@@ -35,6 +35,20 @@ const Formulario = ({ eventos, setEventos, evento, setEvento }) => {
     return random + fecha;
   };
 
+  // useState modal actualización
+  const [modalActualizacion, setModalActualizacion] = useState(false);
+
+  // función de actualización
+  const handleActualizacion = () => {
+    setEvento(evento);
+    setModalActualizacion(true);
+  };
+
+  // cancelación de actualización
+  const cerrarActualizacion = () => {
+    setModalActualizacion(false);
+  };
+
   // validación de campos del formulario
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -70,6 +84,7 @@ const Formulario = ({ eventos, setEventos, evento, setEvento }) => {
       );
 
       setEventos(eventosActualizados);
+      handleActualizacion();/*modal de actualización informativo */
       // limpiar el state en memoria
       setEvento({});
     } else {
@@ -92,6 +107,38 @@ const Formulario = ({ eventos, setEventos, evento, setEvento }) => {
 
   return (
     <div className='bg-[#030303] md:w-1/2 lg:w-2/4 rounded-l-lg '>
+      {/* genero modal de actualización */}
+      {modalActualizacion ? (
+        <div className='fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center '>
+          <div className='bg-[#191919] p-8 rounded shadow-md max-w-md flex flex-col items-center justify-center w-72'>
+            {/* <p className='text-lg font-semibold mb-4'>Se actualizo</p> */}
+            <svg
+              className='w-24 h-24 text-[#6CBC43] dark:text-white'
+              aria-hidden='true'
+              xmlns='http://www.w3.org/2000/svg'
+              fill='currentColor'
+              viewBox='0 0 24 24'
+            >
+              <path
+                fill-rule='evenodd'
+                d='M12 2a3 3 0 0 0-2.1.9l-.9.9a1 1 0 0 1-.7.3H7a3 3 0 0 0-3 3v1.2c0 .3 0 .5-.2.7l-1 .9a3 3 0 0 0 0 4.2l1 .9c.2.2.3.4.3.7V17a3 3 0 0 0 3 3h1.2c.3 0 .5 0 .7.2l.9 1a3 3 0 0 0 4.2 0l.9-1c.2-.2.4-.3.7-.3H17a3 3 0 0 0 3-3v-1.2c0-.3 0-.5.2-.7l1-.9a3 3 0 0 0 0-4.2l-1-.9a1 1 0 0 1-.3-.7V7a3 3 0 0 0-3-3h-1.2a1 1 0 0 1-.7-.2l-.9-1A3 3 0 0 0 12 2Zm3.7 7.7a1 1 0 1 0-1.4-1.4L10 12.6l-1.3-1.3a1 1 0 0 0-1.4 1.4l2 2c.4.4 1 .4 1.4 0l5-5Z'
+                clip-rule='evenodd'
+              />
+            </svg>
+
+            <p className='text-white font-bold mb-6'>Se Actualizo el Evento</p>
+            <div className='flex justify-end'>
+              <button
+                className='bg-red-600 text-white px-4 py-2 rounded hover:bg-gray-400 font-bold'
+                onClick={cerrarActualizacion}
+              >
+                OK
+              </button>
+            </div>
+          </div>
+        </div>
+      ) : null}
+
       <h2 className='text-center pt-2 text-xl lg:text-3xl font-bold text-white'>
         Ingresar Información del Evento
       </h2>

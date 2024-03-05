@@ -6,7 +6,7 @@ const Evento = ({ evento, setEvento, eliminarEvento }) => {
 
   const [modalVisible, setModalVisible] = useState(false);
 
-  // función eliminar que activara el modal
+  // función de eliminación que activara el modal
   const handleEliminar = () => {
     setModalVisible(true);
   };
@@ -22,7 +22,6 @@ const Evento = ({ evento, setEvento, eliminarEvento }) => {
   const cancelarEliminar = () => {
     setModalVisible(false);
   };
-
 
   return (
     <>
